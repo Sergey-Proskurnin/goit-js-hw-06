@@ -1,58 +1,24 @@
 // Задание
-// Выполни рефакторинг класса Car так, чтобы свойство brand
-//  было приватным и добавь два метода для публичного интерфейса,
-//   для чтения и изменения этого свойства.
+// Используя метод map() сделай так, чтобы в переменной titles получился
+//  массив названий книг (свойство title) из всех объектов массива books.
 
-// getBrand() - возвращает значение приватного свойства brand.
-// changeBrand(newBrand) - изменяет значение приватного свойства
-//  brand на newBrand.
 // Тесты
-// Объявлен класс Car.
-// Свойство brand в классе Car объявлено приватным.
-// Конструктор класса принимает объект со свойствами brand, model и price.
-// В результате вызова
-//  new Car({ brand: 'Audi', model: 'Q3', price: 36000 })
-//  получится объект { model: 'Q3', price: 36000 }.
-// В результате вызова
-//  new Car({ brand: 'BMW', model: 'X5', price: 58900 })
-//  получится объект { model: 'X5', price: 58900 }.
-// В результате вызова
-//  new Car({ brand: 'Nissan', model: 'Murano', price: 31700 })
-//   получится объект { model: 'Murano', price: 31700 }.
-// У экземпляра нет публичного свойства brand.
-// Метод getBrand() возвращает значение приватного свойства brand.
-// Метод changeBrand('Honda') изменяет значение
-//  приватного свойства brand на 'Honda'.
+// Объявлена переменная books.
+// Значение переменной books это массив.
+// Объявлена переменная titles.
+// Значение переменной titles это массив
+//  ['Последнее королевство', 'На берегу спокойных вод', 'Сон смешного человека', 'Красна как кровь', 'Враг Божий'].
+// Для перебора массива books используется метод map() как чистая функция.
 
-class Car {
-  #brand;
-  model;
-  price;
+const books = [
+  { title: 'Последнее королевство', author: 'Бернард Корнуэлл', rating: 8.38 },
+  { title: 'На берегу спокойных вод', author: 'Роберт Шекли', rating: 8.51 },
+  { title: 'Сон смешного человека', author: 'Федор Достоевский', rating: 7.75 },
+  { title: 'Красна как кровь', author: 'Ли Танит', rating: 7.94 },
+  { title: 'Враг Божий', author: 'Бернард Корнуэлл', rating: 8.67 }
+];
+// Пиши код ниже этой строки
 
-  constructor({ brand, model, price }) {
-    this.#brand = brand;
-    this.model = model;
-    this.price = price;
-  }
-  getBrand() {
-    return this.#brand;
-  }
-  changeBrand(newBrand) {
-    return this.#brand = newBrand;
-  }
-}
+const titles = books.map(book => book.title);
 
-const newCar = new Car({ brand: 'Audi', model: 'Q3', price: 36000 });
-console.log(new Car({ brand: 'Audi', model: 'Q3', price: 36000 }));
-
-//  получится объект { model: 'Q3', price: 36000 }.
-console.log(new Car({ brand: 'BMW', model: 'X5', price: 58900 }));
-
-//  получится объект { model: 'X5', price: 58900 }.
-console.log(new Car({ brand: 'Nissan', model: 'Murano', price: 31700 }));
-
-//   получится объект { model: 'Murano', price: 31700 }.
-// У экземпляра нет публичного свойства brand.
-console.log(newCar.getBrand()); // Метод возвращает значение приватного свойства brand.
-console.log(newCar.changeBrand('Honda')); //Метод изменяет значение
-//  приватного свойства brand на 'Honda'.
+console.log(titles);

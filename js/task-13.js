@@ -1,100 +1,107 @@
 // Задание
-// Выполни рефакторинг заменив функцию-конструктор StringBuilder
-//  на класс с методами. Сделай так, чтобы свойство value было приватным.
-
-// Под комментарием мы добавили инициализацию экземпляра
-//  и вызовы методов в той последовательности, в которой
-//   твой код будут проверять тесты. Пожалуйста ничего там не меняй.
+// Дополни функцию getUserNames(users) так, чтобы она возвращала
+//  массив имён пользователей (свойство name) из массива объектов
+//   в параметре users.
 
 // Тесты
-// Объявлен класс StringBuilder.
-// Свойство value в классе StringBuilder объявлено приватным.
-// Вызов StringBuilder.prototype.hasOwnProperty('getValue')
-//  возвращает true.
-// Вызов StringBuilder.prototype.hasOwnProperty('padEnd')
-//  возвращает true.
-// Вызов StringBuilder.prototype.hasOwnProperty('padStart')
-//  возвращает true.
-// Вызов StringBuilder.prototype.hasOwnProperty('padBoth')
-//  возвращает true.
-// В результате вызова new StringBuilder('.')
-//  значение переменной builder это объект.
-// Вызов StringBuilder.prototype.isPrototypeOf(builder) возвращает true.
-// У объекта builder нет свойства value.
-// Первый вызов builder.getValue()
-// , сразу после инциализации экземпляра, возвращает строку '.'.
-// Второй вызов builder.getValue(), после вызова builder.padStart('^'),
-//  возвращает строку '^.'.
-// Третий вызов builder.getValue(), после вызова builder.padEnd('^'),
-//  возвращает строку '^.^'.
-// Четвёртый вызов builder.getValue(), после вызова builder.padBoth('='),
-//  возвращает строку '=^.^='.
+// Объявлена переменная getUserNames.
 
-//  function StringBuilder(baseValue) {
-//     this.value = baseValue;
-//   }
+// Переменной getUserNames присвоена стрелочная функция с параметром
+//  (users).
 
-//   StringBuilder.prototype.getValue = function () {
-//     return this.value;
-//   };
+// Для перебора параметра users используется метод map().
 
-//   StringBuilder.prototype.padEnd = function (str) {
-//     this.value += str;
-//   };
+// Вызов функции с указанным массивом пользователей возвращает массив
+//  ['Moore Hensley', 'Sharlene Bush', 'Ross Vazquez',
+//   'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony'].
 
-//   StringBuilder.prototype.padStart = function (str) {
-//     this.value = str + this.value;
-//   };
+// Вызов функции со случайными, но валидными аргументами,
+// возвращает правильное значение.
 
-//   StringBuilder.prototype.padBoth = function (str) {
-//     this.padStart(str);
-//     this.padEnd(str);
-//   };
+const users = [
+  {
+    name: 'Moore Hensley',
+    email: 'moorehensley@indexia.com',
+    eyeColor: 'blue',
+    friends: ['Sharron Pace'],
+    isActive: false,
+    balance: 2811,
+    skills: ['ipsum', 'lorem'],
+    gender: 'male',
+    age: 37,
+  },
+  {
+    name: 'Sharlene Bush',
+    email: 'sharlenebush@tubesys.com',
+    eyeColor: 'blue',
+    friends: ['Briana Decker', 'Sharron Pace'],
+    isActive: true,
+    balance: 3821,
+    skills: ['tempor', 'mollit', 'commodo', 'veniam', 'laborum'],
+    gender: 'female',
+    age: 34,
+  },
+  {
+    name: 'Ross Vazquez',
+    email: 'rossvazquez@xinware.com',
+    eyeColor: 'green',
+    friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+    isActive: false,
+    balance: 3793,
+    skills: ['nulla', 'anim', 'proident', 'ipsum', 'elit'],
+    gender: 'male',
+    age: 24,
+  },
+  {
+    name: 'Elma Head',
+    email: 'elmahead@omatom.com',
+    eyeColor: 'green',
+    friends: ['Goldie Gentry', 'Aisha Tran'],
+    isActive: true,
+    balance: 2278,
+    skills: ['adipisicing', 'irure', 'velit'],
+    gender: 'female',
+    age: 21,
+  },
+  {
+    name: 'Carey Barr',
+    email: 'careybarr@nurali.com',
+    eyeColor: 'blue',
+    friends: ['Jordan Sampson', 'Eddie Strong'],
+    isActive: true,
+    balance: 3951,
+    skills: ['ex', 'culpa', 'nostrud'],
+    gender: 'male',
+    age: 27,
+  },
+  {
+    name: 'Blackburn Dotson',
+    email: 'blackburndotson@furnigeer.com',
+    eyeColor: 'brown',
+    friends: ['Jacklyn Lucas', 'Linda Chapman'],
+    isActive: false,
+    balance: 1498,
+    skills: ['non', 'amet', 'ipsum'],
+    gender: 'male',
+    age: 38,
+  },
+  {
+    name: 'Sheree Anthony',
+    email: 'shereeanthony@kog.com',
+    eyeColor: 'brown',
+    friends: ['Goldie Gentry', 'Briana Decker'],
+    isActive: true,
+    balance: 2764,
+    skills: ['lorem', 'veniam', 'culpa'],
+    gender: 'female',
+    age: 39,
+  },
+];
 
-class StringBuilder {
-  #value;
+// Пиши код ниже этой строки
+const getUserNames = users => {
+  return users.map(user => user.name); 
 
-  constructor(value) {
-    this.#value = value;
-  }
-  getValue(str) {
-    return this.#value;
-  }
-
-  padEnd(str) {
-    this.#value += str;
-  }
-
-  padStart(str) {
-    this.#value = str + this.#value;
-  }
-
-  padBoth(str) {
-    this.padStart(str);
-    this.padEnd(str);
-  }
 }
-
+    console.log(getUserNames(users));
 // Пиши код выше этой строки
-const builder = new StringBuilder('.');
-
-console.log(StringBuilder.prototype.hasOwnProperty('getValue'));
-//возвращает true.
-console.log(StringBuilder.prototype.hasOwnProperty('padEnd'));
-//возвращает true.
-console.log(StringBuilder.prototype.hasOwnProperty('padStart'));
-// возвращает true.
-console.log(StringBuilder.prototype.hasOwnProperty('padBoth'));
-//возвращает true.
-console.log(new StringBuilder('.'));
-// значение переменной builder это объект.
-console.log(StringBuilder.prototype.isPrototypeOf(builder));
-// возвращает true.
-
-console.log(builder.getValue()); // '.'
-builder.padStart('^');
-console.log(builder.getValue()); // '^.'
-builder.padEnd('^');
-console.log(builder.getValue()); // '^.^'
-builder.padBoth('=');
-console.log(builder.getValue()); // '=^.^='

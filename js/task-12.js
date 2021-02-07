@@ -1,86 +1,35 @@
 // Задание
-// Выполни рефакторинг заменив функцию-конструктор Storage на класс
-//  с методами. Сделай так, чтобы свойство items было приватным.
-
-// Под комментарием мы добавили инициализацию экземпляра и вызовы
-//  методов в той последовательности, в которой твой код будут
-//   проверять тесты. Пожалуйста ничего там не меняй.
+// Используя метод flatMap() сделай так, чтобы в переменной
+//  genres получился массив всех жанров книг (свойство genres) из
+//   массива книг books.
 
 // Тесты
-// Объявлен класс Storage.
-// Свойство items в классе Storage объявлено приватным.
-// Конструктор класса принимает свойство items.
-// Вызов Storage.prototype.hasOwnProperty('getItems') возвращает true.
-// Вызов Storage.prototype.hasOwnProperty('addItem') возвращает true.
-// Вызов Storage.prototype.hasOwnProperty('removeItem') возвращает true.
-// В результате вызова
-//  new Storage([ 'Нанитоиды', 'Пролонгер', 'Антигравитатор' ])
-//   значение переменной storage это объект.
-// Вызов Storage.prototype.isPrototypeOf(storage) возвращает true.
-// У объекта storage нет свойства items.
-// Первый вызов storage.getItems(), сразу после инциализации экземпляра,
-//  возвращает массив ["Нанитоиды", "Пролонгер", "Антигравитатор"].
-// Второй вызов, storage.getItems(), после вызова
-//  storage.addItem('Дроид'), возвращает массив
-//   ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"].
-// Третий вызов storage.getItems(),
-//  после вызова storage.removeItem('Пролонгер'),
-//   возвращает массив ["Нанитоиды", "Антигравитатор", "Дроид"].
+// Объявлена переменная books.
+// Значение переменной books это массив объектов.
+// Объявлена переменная genres.
+// Значение переменной genres это массив
+//  [ 'приключения', 'историческое', 'фантастика', 'ужасы', 'мистика' ].
+// Для перебора массива books используется метод flatMap().
 
-//   function Storage(items) {
-//     this.items = items;
-//   }
-
-//   Storage.prototype.getItems = function () {
-//     return this.items;
-//   };
-
-//   Storage.prototype.addItem = function (newItem) {
-//     this.items.push(newItem);
-//   };
-
-//   Storage.prototype.removeItem = function (item) {
-//     const itemIndex = this.items.indexOf(item);
-//     this.items.splice(itemIndex, 1);
-//   };
-
-class Storage {
-  #items;
-
-  constructor(items) {
-    this.#items = items;
+const books = [
+  {
+    title: 'Последнее королевство',
+    author: 'Бернард Корнуэлл',
+    genres: ['приключения', 'историческое']
+  },
+  {
+    title: 'На берегу спокойных вод',
+    author: 'Роберт Шекли',
+    genres: ['фантастика']
+  },
+  {
+    title: 'Красна как кровь',
+    author: 'Ли Танит',
+    genres: ['ужасы', 'мистика']
   }
-  getItems() {
-    return this.#items;
-  }
-  addItem(newItem) {
-    this.#items.push(newItem);
-  }
-  removeItem(item) {
-    const itemIndex = this.#items.indexOf(item);
-    this.#items.splice(itemIndex, 1);
-  }
-}
+];
+// Пиши код ниже этой строки
 
-// Пиши код выше этой строки
-const storage = new Storage(['Нанитоиды', 'Пролонгер', 'Антигравитатор']);
+const genres = books.flatMap(book => book.genres);
 
-  console.log(Storage.prototype.hasOwnProperty('getItems'));
-  //возвращает true.
-console.log(Storage.prototype.hasOwnProperty('addItem'));
- //возвращает true.
-console.log(Storage.prototype.hasOwnProperty('removeItem'));
- //возвращает true.
-console.log(new Storage([ 'Нанитоиды', 'Пролонгер', 'Антигравитатор' ]));
- //  значение переменной storage это объект.
-console.log(Storage.prototype.isPrototypeOf(storage));
-//возвращает true.
-
-console.log(storage.getItems()); 
-// ["Нанитоиды", "Пролонгер", "Антигравитатор"]
-storage.addItem('Дроид');
-console.log(storage.getItems()); 
-// ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
-storage.removeItem('Пролонгер');
-console.log(storage.getItems()); 
-// ["Нанитоиды", "Антигравитатор", "Дроид"]
+console.log(genres);

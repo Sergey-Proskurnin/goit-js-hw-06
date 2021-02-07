@@ -1,37 +1,41 @@
 // Задание
-// В приложении нужен администратор с возможностью добавлять почты пользователей
-//  в чёрный список.
+// Используя метод filter() дополни код так, чтобы:
 
-// Объяви класс Admin, который наследует от класса User.
-// Добавь классу Admin публичное статическое свойство AccessLevel (уровень доступа),
-//  значение которого это объект { BASIC: 'basic', SUPERUSER: 'superuser' }.
+// В переменной topRatedBooks получился массив книг рейтинг
+//  которых (свойство rating) больше либо равно значению переменной
+//   MIN_RATING.
+// В переменной booksByAuthor получился массив книг написанных
+//  автором с именем (свойство author) которое совпадает со значением
+//   в переменной AUTHOR.
 // Тесты
-// Объявлен класс Admin.
-// Класс Admin наследует от класса User.
-// У класса Admin есть публичное статическое свойство AccessLevel.
-// Обращение к Admin.AccessLevel.BASIC возвращает строку 'basic'.
-// Обращение к Admin.AccessLevel.SUPERUSER возвращает строку 'superuser'.
+// Объявлена переменная books.
+// Значение переменной books это массив объектов.
+// Объявлена переменная MIN_RATING.
+// Значение переменной MIN_RATING это число 8.
+// Объявлена переменная AUTHOR.
+// Значение переменной AUTHOR это строка 'Бернард Корнуэлл'.
+// Объявлена переменная topRatedBooks.
+// Значение переменной topRatedBooks это массив
+//  книг с рейтингов выше 8.
+// Объявлена переменная booksByAuthor.
+// Значение переменной booksByAuthor это массив книг автор
+//  которых 'Бернард Корнуэлл'.
+// Для перебора массива books использован метод filter().
 
-class User {
-  email;
+const books = [
+  { title: 'Последнее королевство', author: 'Бернард Корнуэлл', rating: 8.38 },
+  { title: 'На берегу спокойных вод', author: 'Роберт Шекли', rating: 8.51 },
+  { title: 'Сон смешного человека', author: 'Федор Достоевский', rating: 7.75 },
+  { title: 'Красна как кровь', author: 'Ли Танит', rating: 7.94 },
+  { title: 'Враг Божий', author: 'Бернард Корнуэлл', rating: 8.67 }
+];
 
-  constructor(email) {
-    this.email = email;
-  }
-
-  get email() {
-    return this.email;
-  }
-
-  set email(newEmail) {
-    this.email = newEmail;
-  }
-}
+const MIN_RATING = 8;
+const AUTHOR = 'Бернард Корнуэлл';
 // Пиши код ниже этой строки
 
-class Admin extends User {
-  static AccessLevel = { BASIC: 'basic', SUPERUSER: 'superuser' };
-}
+const topRatedBooks = books.filter(({rating}) => rating >= MIN_RATING);
+const booksByAuthor = books.filter(({author}) => author === AUTHOR);
 
-console.log(Admin.AccessLevel.BASIC); //возвращает строку 'basic'.
-console.log(Admin.AccessLevel.SUPERUSER); //возвращает строку 'superuser'.
+console.log(topRatedBooks);
+console.log(booksByAuthor);

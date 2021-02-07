@@ -1,52 +1,27 @@
 // Задание
-// Выполни рефакторинг класса Car. Добавь публичное статическое свойство
-//  MAX_PRICE со значением 50000 - максимально допустимая цена автомобиля.
-
-// Добавь сеттеру price проверку передаваемого значения параметра newPrice.
-//  Если оно больше чем MAX_PRICE, сеттер ничего не делает, а если меньше или равно,
-//   то перезаписывает цену автомобиля.
+// Дополни код так, чтобы в переменной evenNumbers
+//  получился массив чётных чисел из массива numbers,
+//   а в переменной oddNumbers массив нечётных. Обязательно
+//    используй метод filter().
 
 // Тесты
-// Объявлен класс Car.
-// У класса Car есть статическое свойство MAX_PRICE.
-// Значение статического свойства MAX_PRICE это число 50000.
-// У экземпляра нет свойства MAX_PRICE.
-// В классе Car объявлен геттер price.
-// В классе Car объявлен сеттер price.
-// У экземпляра класса Car вызов сеттера price, со значением аргумента
-//  меньше чем значение MAX_PRICE, изменяет свойство #price.
-// У экземпляра класса Car вызов сеттера price, со значением аргумента
-//  больше чем значение MAX_PRICE, не изменяет свойство #price.
+// Объявлена переменная numbers.
+// Значение переменной numbers это массив
+//  [17, 24, 82, 61, 36, 18, 47, 52, 73].
+// Объявлена переменная evenNumbers.
+// Значение переменной evenNumbers это массив
+//  [24, 82, 36, 18, 52].
+// Объявлена переменная oddNumbers.
+// Значение переменной oddNumbers это массив
+//  [17, 61, 47, 73].
+// Для перебора массива numbers использован метод filter().
 
-class Car {
-  // Пиши код ниже этой строки
-//   static TYPES = {
-//     MAX_PRICE: 50000,
-//   };
-static MAX_PRICE = 50000;
-  #price;
+const numbers = [17, 24, 82, 61, 36, 18, 47, 52, 73];
+// Пиши код ниже этой строки
 
-  constructor({ price }) {
-    this.#price = price;
-  }
+const evenNumbers = numbers.filter(number => number % 2 === 0);
+const oddNumbers = numbers.filter(number => number % 2 !== 0);
 
-  get price() {
-    return this.#price;
-  }
-
-  set price(newPrice) {
-    if (newPrice <= Car.MAX_PRICE) {
-      this.#price = newPrice;
-    }
-  }
-  // Пиши код выше этой строки
-}
-
-const audi = new Car({ price: 35000 });
-console.log(audi.price); // 35000
-
-audi.price = 49000;
-console.log(audi.price); // 49000
-
-audi.price = 51000;
-console.log(audi.price); // 49000
+console.log(numbers);//[17, 24, 82, 61, 36, 18, 47, 52, 73].
+console.log(evenNumbers);//[24, 82, 36, 18, 52].
+console.log(oddNumbers);//[17, 61, 47, 73].
