@@ -1,41 +1,41 @@
 // Задание
-// Выполни рефакторинг кода, заменив функцию-конструктор Car
-//  на класс с методом-конструктором, принимающим объект.
+// Функция changeEven(numbers, value) принимает массив чисел
+//  numbers и обновляет каждый элемент, значение которого это
+//   чётное число, добавляя к нему значение параметра value.
+
+// Выполни рефакторинг функции так, чтобы она стала чистой -
+//  не изменяла массив чисел numbers, а создавала, наполняла и
+//   возвращала новый массив с обновлёнными значениями.
 
 // Тесты
-// Объявлен класс Car.
-// Конструктор класса принимает объект со свойствами brand, model и price.
-// В результате вызова
-//  new Car({ brand: 'Audi', model: 'Q3', price: 36000 })
-//   получится объект { brand: 'Audi', model: 'Q3', price: 36000 }.
-// В результате вызова
-//  new Car({ brand: 'BMW', model: 'X5', price: 58900 })
-//   получится объект { brand: 'BMW', model: 'X5', price: 58900 }.
-// В результате вызова
-//  new Car({ brand: 'Nissan', model: 'Murano', price: 31700 })
-//   получится объект { brand: 'Nissan', model: 'Murano', price: 31700 }.
+// Объявлена функция changeEven(numbers, value).
+// Функция changeEven не изменяет значение параметра numbers.
+// Вызов changeEven([1, 2, 3, 4, 5], 10)
+//  возвращает новый массив [1, 12, 3, 14, 5].
+// Вызов changeEven([2, 8, 3, 7, 4, 6], 10)
+//  возвращает новый массив [12, 18, 3, 7, 14, 16].
+// Вызов changeEven([17, 24, 68, 31, 42], 100)
+//  возвращает новый массив [17, 124, 168, 31, 142].
+// Вызов changeEven([44, 13, 81, 92, 36, 54], 100)
+//  возвращает новый массив [144, 13, 81, 192, 136, 154].
+// Вызов функции со случайными, но валидными аргументами,
+//  возвращает правильное значение.
 
-//   function Car({ brand, model, price }) {
-//     this.brand = brand;
-//     this.model = model;
-//     this.price = price;
-//   }
+const changeEven = (numbers, value) => {
+  // Пиши код ниже этой строки
+  let newCangeEven = [];
+  numbers.forEach(number => {
+    if (number % 2 === 0) {
+      number += value;
+    }
+    newCangeEven.push(number);
+  });
 
-class Car {
-  brand;
-  model;
-  price;
+  return newCangeEven;
+};
 
-  constructor({ brand, model, price }) {
-    this.brand = brand;
-    this.model = model;
-    this.price = price;
-  }
-}
-
-console.log(new Car({ brand: 'Audi', model: 'Q3', price: 36000 }));
-//   получится объект { brand: 'Audi', model: 'Q3', price: 36000 }.
-console.log(new Car({ brand: 'BMW', model: 'X5', price: 58900 }));
-//    получится объект { brand: 'BMW', model: 'X5', price: 58900 }.
-console.log(new Car({ brand: 'Nissan', model: 'Murano', price: 31700 }));
-//    получится объект { brand: 'Nissan', model: 'Murano', price: 31700 }.
+// Пиши код выше этой строки
+console.log(changeEven([1, 2, 3, 4, 5], 10)); //[1, 12, 3, 14, 5].
+console.log(changeEven([2, 8, 3, 7, 4, 6], 10)); //[12, 18, 3, 7, 14, 16].
+console.log(changeEven([17, 24, 68, 31, 42], 100)); //[17, 124, 168, 31, 142]
+console.log(changeEven([44, 13, 81, 92, 36, 54], 100)); //[144, 13, 81, 192, 136, 154].

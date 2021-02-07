@@ -1,33 +1,46 @@
 // Задание
-// Объяви функцию-конструктор Car которая принимает
-//  три параметра:
+// Функция getCommonElements(firstArray, secondArray) принимает
+//  два массива произвольной длины в параметры firstArray и secondArray,
+//   и возвращает новый массив их общих элементов, то есть тех которые
+// есть
+//    в обоих массивах.
 
-// brand - марка автомобиля.
-// model - модель автомобиля.
-// price - цена автомобиля.
-// Функция Car должна создавать объект с одноимёнными
-//  свойствами brand, model и price, значениями которых
-//   должны быть переданные аргументы во время её вызова
-//    с оператором new.
+// Выполни рефакторинг функции так, чтобы вместо цикла for она
+// использовала
+//  метод forEach.
 
 // Тесты
-// Объявлена функция Car(brand, model, price).
-// В результате вызова new Car('Audi', 'Q3', 36000)
-//  получится объект { brand: 'Audi', model: 'Q3', price: 36000 }.
-// В результате вызова new Car('BMW', 'X5', 58900)
-//  получится объект { brand: 'BMW', model: 'X5', price: 58900 }.
-// В результате вызова new Car('Nissan', 'Murano', 31700)
-//  получится объект { brand: 'Nissan', model: 'Murano', price: 31700 }.
+// Объявлена функция getCommonElements(firstArray, secondArray).
+// Для перебора параметра (массива) использован метод forEach.
+// Вызов getCommonElements([1, 2, 3], [2, 4]) возвращает [2].
+// Вызов getCommonElements([1, 2, 3], [2, 1, 17, 19]) возвращает [1, 2].
+// Вызов getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27])
+//  возвращает [12, 27, 3].
+// Вызов getCommonElements([10, 20, 30, 40], [4, 30, 17, 10, 40])
+//  возвращает [10, 30, 40].
+// Вызов getCommonElements([1, 2, 3], [10, 20, 30]) возвращает [].
+// Вызов функции со случайными, но валидными аргументами, возвращает
+//  правильное значение.
 
-function Car(brand, model, price) {
-  this.brand = brand;
-  this.model = model;
-  this.price = price;
+function getCommonElements(firstArray, secondArray) {
+  const commonElements = [];
+  // Пиши код ниже этой строки
+
+  firstArray.forEach((number) => {
+    secondArray.includes(number)
+    ? commonElements.push(number)
+    : []
+  }
+  )
+
+  
+
+  return commonElements;
+  // Пиши код выше этой строки
 }
 
-console.log(new Car('Audi', 'Q3', 36000));
-//  получится объект { brand: 'Audi', model: 'Q3', price: 36000 }.
-console.log(new Car('BMW', 'X5', 58900));
-//  получится объект { brand: 'BMW', model: 'X5', price: 58900 }.
-console.log(new Car('Nissan', 'Murano', 31700));
-//  получится объект { brand: 'Nissan', model: 'Murano', price: 31700 }.
+console.log(getCommonElements([1, 2, 3], [2, 4]));//возвращает [2]
+console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19]) );//возвращает [1, 2]
+console.log(getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27]));//  возвращает [12, 27, 3]
+console.log(getCommonElements([10, 20, 30, 40], [4, 30, 17, 10, 40]));//  возвращает [10, 30, 40].
+console.log(getCommonElements([1, 2, 3], [10, 20, 30]));//возвращает [].

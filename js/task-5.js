@@ -1,43 +1,22 @@
 // Задание
-// Добавь в свойство prototype функции-конструктора Car два метода:
+// Выполни рефакторинг функции calculateTotalPrice() так, чтобы она
+//  была объявлена как стрелочная.
 
-// getPrice() - возвращает значение свойства price из объекта который
-//  его будет вызывать.
-// changePrice(newPrice) - обновляет значение свойства price у объекта
-//  который его будет вызывать на newPrice.
 // Тесты
-// Объявлена функция Car({ brand, model, price }).
-// Вызов Car.prototype.hasOwnProperty('getPrice') возвращает true.
-// Значение Car.prototype.getPrice это функция.
-// Вызов Car.prototype.hasOwnProperty('changePrice') возвращает true.
-// Значение Car.prototype.changePrice это функция.
-// У объекта, созданного вызовом new Car({ brand: 'Audi', model: 'Q3', price: 36000 }),
-//  вызов метода getPrice() вернет число 36000.
-// У объекта, созданного вызовом new Car({ brand: 'Audi', model: 'Q3', price: 36000 }),
-//  вызов метода changePrice(35000) и последующем вызове getPrice() вернет число 35000.
+// Объявлена переменная calculateTotalPrice.
+// Переменной calculateTotalPrice присвоена стрелочная функция
+//  с параметрами (quantity, pricePerItem).
+// В функции использован неявный возврат.
+// Вызов calculateTotalPrice(5, 100) возвращает 500.
+// Вызов calculateTotalPrice(8, 60) возвращает 480.
+// Вызов calculateTotalPrice('3, 400) возвращает 1200.
+// Вызов функции со случайными, но валидными аргументами,
+//  возвращает правильное значение.
 
-function Car({ brand, model, price }) {
-  this.brand = brand;
-  this.model = model;
-  this.price = price;
-}
+// Пиши код ниже этой строки
+const calculateTotalPrice = (quantity, pricePerItem) => quantity * pricePerItem;
+  // Пиши код выше этой строки
 
-Car.prototype.getPrice = function() {
-  return this.price;
-};
-
-Car.prototype.changePrice = function(newPrice) {
-  this.price = newPrice;
-};
-
-
-
-
-// console.log(Car.prototype.hasOwnProperty('getPrice')); //возвращает true.
-// console.log(Car.prototype.hasOwnProperty('changePrice')); //возвращает true.
-console.log(new Car({ brand: 'Audi', model: 'Q3', price: 36000 }));
-console.log(getPrice()); //вернет число 36000
-// console.log(new Car({ brand: 'Audi', model: 'Q3', price: 36000 }));
-// console.log(changePrice(35000)); //вернет число 35000.
-// console.log(getPrice()); //вернет число 35000.
-
+console.log(calculateTotalPrice(5, 100));//возвращает 500.
+console.log(calculateTotalPrice(8, 60));//возвращает 480.
+console.log(calculateTotalPrice(3, 400));//возвращает 1200.

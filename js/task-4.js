@@ -1,29 +1,25 @@
 // Задание
-// Выполни рефакторинг функции-конструктора Car так, чтобы она
-//  принимала один параметр - объект со свойсвами brand, model и price.
-//  Деструктуризируй объект в сигнатуре (подписи) функции.
+// Выполни рефакторинг функции calculateTotalPrice() так, чтобы
+//  она была объявлена как стрелочная.
 
 // Тесты
-// Объявлена функция Car({ brand, model, price }).
-// В результате вызова new Car({ brand: 'Audi', model: 'Q3', price: 36000 })
-//  получится объект { brand: 'Audi', model: 'Q3', price: 36000 }.
-// В результате вызова new Car({ brand: 'BMW', model: 'X5', price: 58900 })
-//  получится объект { brand: 'BMW', model: 'X5', price: 58900 }.
-// В результате вызова new Car({ brand: 'Nissan', model: 'Murano',
-//  price: 31700 }) получится объект { brand: 'Nissan', model: 'Murano',
-//   price: 31700 }.
+// Объявлена переменная calculateTotalPrice.
+// Переменной calculateTotalPrice присвоена стрелочная функция
+//  с параметрами (quantity, pricePerItem).
+// Вызов calculateTotalPrice(5, 100) возвращает 500.
+// Вызов calculateTotalPrice(8, 60) возвращает 480.
+// Вызов calculateTotalPrice(3, 400) возвращает 1200.
+// Вызов функции со случайными, но валидными аргументами, возвращает
+//  правильное значение.
 
-function Car({brand, model, price}) {
-    this.brand = brand;
-    this.model = model;
-    this.price = price;
-}  
+// Пиши код ниже этой строки
 
-
-
-console.log(new Car({ brand: 'Audi', model: 'Q3', price: 36000 }));
-//  получится объект { brand: 'Audi', model: 'Q3', price: 36000 }.
-console.log(new Car({ brand: 'BMW', model: 'X5', price: 58900 }));
-//    получится объект { brand: 'BMW', model: 'X5', price: 58900 }.
-console.log(new Car({ brand: 'Nissan', model: 'Murano', price: 31700 }));
-//  получится объект { brand: 'Nissan', model: 'Murano', price: 31700 }.
+const calculateTotalPrice = (quantity, pricePerItem) => {
+    // Пиши код выше этой строки
+    return quantity * pricePerItem;
+  }
+  
+  console.log(calculateTotalPrice(5, 100)); //возвращает 500.
+  console.log(calculateTotalPrice(8, 60));//возвращает 480.
+  console.log(calculateTotalPrice(3, 400));//возвращает 1200.
+  

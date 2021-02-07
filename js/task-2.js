@@ -1,68 +1,45 @@
 // Задание
-// Измени код, построив цепочку прототипов так, чтобы объект
-//  ancestor был прототипом для parent, а тот в свою очередь был
-//   прототипом для child.
+// Функция filterArray(numbers, value) принимает массив
+//  чисел numbers и возвращает новый массив, в котором будут
+//   только те элементы оригинального массива, которые больше
+//    чем значение параметра value.
+
+// Выполни рефакторинг функции так, чтобы вместо цикла for она
+//  использовала метод forEach.
 
 // Тесты
-// Объявлена переменная ancestor.
-// Значение переменной ancestor это объект.
-// Объявлена переменная parent.
-// Значение переменной parent это объект.
-// Объявлена переменная child.
-// Значение переменной child это объект.
-// Вызов parent.isPrototypeOf(child) возвращает true.
-// Обращение к parent.surname возвращает 'Moore'.
-// Обращение к parent.heritage возвращает 'Irish'.
-// Вызов parent.hasOwnProperty('surname') возвращает true.
-// Вызов parent.hasOwnProperty('heritage') возвращает false.
-// Вызов ancestor.isPrototypeOf(parent) возвращает true.
-// Вызов child.hasOwnProperty('surname') возвращает false.
-// Обращение к child.surname возвращает 'Moore'.
-// Обращение к child.heritage возвращает 'Irish'.
-// Вызов child.hasOwnProperty('heritage') возвращает false.
-// Обращение к ancestor.heritage возвращает 'Irish'.
-// Вызов ancestor.hasOwnProperty('surname') возвращает true.
-// Вызов ancestor.hasOwnProperty('heritage') возвращает true.
-// Обращение к ancestor.surname возвращает 'Dawson'.
-// Используется метод Object.create().
+// Объявлена функция filterArray(numbers, value).
+// Для перебора массива numbers использован метод forEach.
+// Вызов функции filterArray([1, 2, 3, 4, 5], 3) возвращает [4, 5].
+// Вызов функции filterArray([1, 2, 3, 4, 5], 4) возвращает [5].
+// Вызов функции filterArray([1, 2, 3, 4, 5], 5) возвращает [].
+// Вызов функции filterArray([12, 24, 8, 41, 76], 38)
+//  возвращает [41, 76].
+// Вызов функции filterArray([12, 24, 8, 41, 76], 20)
+//  возвращает [24, 41, 76].
+// Вызов функции со случайными, но валидными аргументами,
+//  возвращает правильное значение.
 
-const ancestor = {
-  name: 'Paul',
-  age: 83,
-  surname: 'Dawson',
-  heritage: 'Irish',
-};
-// Пиши код ниже этой строки
+ function filterArray(numbers, value) {
+  const filteredNumbers = [];
+  // Пиши код ниже этой строки
+  
 
-const parent = Object.create(ancestor);
-parent.name = 'Stacey';
-parent.surname = 'Moore';
-parent.age = 54;
+  numbers.forEach(function(number) {
+    number > value
+    ? filteredNumbers.push(number)
+    : []
+  });
+  
+  
+  
 
-const child = Object.create(parent);
-child.name = 'Jason';
-child.age = 27;
+  // Пиши код выше этой строки
+  return filteredNumbers;
+}
 
-// Пиши код выше этой строки
-
-console.log(parent.isPrototypeOf(child)); //возвращает true.
-console.log(parent.surname); //возвращает 'Moore'.
-console.log(parent.heritage); //возвращает 'Irish'
-console.log(parent.hasOwnProperty('surname')); //возвращает true.
-console.log(parent.hasOwnProperty('heritage')); //возвращает false.
-console.log(ancestor.isPrototypeOf(parent)); //возвращает true.
-console.log(child.hasOwnProperty('surname')); //возвращает false.
-console.log(child.surname); //возвращает 'Moore'.
-console.log(child.heritage); //возвращает 'Irish'.
-console.log(child.hasOwnProperty('heritage')); //возвращает false.
-console.log(ancestor.heritage); //возвращает 'Irish'.
-console.log(ancestor.hasOwnProperty('surname')); //возвращает true.
-console.log(ancestor.hasOwnProperty('heritage')); //возвращает true.
-console.log(ancestor.surname); //возвращает 'Dawson'.
-
-
-
-
-
-
-
+console.log(filterArray([1, 2, 3, 4, 5], 3));//возвращает [4, 5].
+console.log(filterArray([1, 2, 3, 4, 5], 4));//возвращает [5].
+console.log(filterArray([1, 2, 3, 4, 5], 5));//возвращает [].
+console.log(filterArray([12, 24, 8, 41, 76], 38));//возвращает [41, 76].
+console.log(filterArray([12, 24, 8, 41, 76], 20));//  возвращает [24, 41, 76])

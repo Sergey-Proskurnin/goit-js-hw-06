@@ -1,39 +1,17 @@
 // Задание
-// Добавь классу Car две метода.
+// Дополни код так, чтобы в переменной
+//  planetsLengths получился массив длин названий планет.
+//   Обязательно используй метод map().
 
-// getPrice() - возвращает значение свойства price из объекта
-//  который его будет вызывать.
-// changePrice(newPrice) - обновляет значение свойства price
-//  у объекта который его будет вызывать на newPrice.
 // Тесты
-// Объявлен класс Car.
-// Конструктор класса принимает объект со свойствами brand,
-//  model и price.
-// Вызов Car.prototype.hasOwnProperty('getPrice') возвращает true.
-// Значение Car.prototype.getPrice это функция.
-// Вызов Car.prototype.hasOwnProperty('changePrice') возвращает true.
-// Значение Car.prototype.changePrice это функция.
+// Объявлена переменная planets.
+// Значение переменной planets это массив
+//  ['Земля', 'Марс', 'Венера', 'Юпитер'].
+// Объявлена переменная planetsLengths.
+// Значение переменной planetsLengths это массив [5, 4, 6, 6].
+// Для перебора массива планет использован метод map().
 
-class Car {
-  brand;
-  model;
-  price;
-  constructor({ brand, model, price }) {
-    this.brand = brand;
-    this.model = model;
-    this.price = price;
-  }
-  getPrice() {
-    return this.price;
-  }
-  changePrice(newPrice) {
-    this.price = newPrice;
-  }
-}
-console.log(Car.prototype.hasOwnProperty('getPrice'));
-//   // возвращает true.
-console.log(Car.prototype.getPrice);
-// //Значение это функция.
-console.log(Car.prototype.hasOwnProperty('changePrice'));
-//возвращает true.
-console.log(Car.prototype.changePrice); //значение это функция.
+const planets = ['Земля', 'Марс', 'Венера', 'Юпитер'];
+// Пиши код ниже этой строки
+const planetsLengths = planets.map(planet => planet.length);
+console.log(planetsLengths);

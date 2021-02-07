@@ -1,68 +1,36 @@
 // Задание
-// Напиши функцию-конструктор StringBuilder, которая принимает один параметр baseValue -
-//  произвольную строку, которая записывается на создаваемый объект в свойство value.
-
-// Добавь методы на прототип:
-
-// getValue() - возвращает текущее значение свойства value.
-// padEnd(str) - получает парметр str (строку) и добавляет её в конец значения
-//  свойства value объекта, который вызывает этот метод.
-// padStart(str) - получает парметр str (строку) и добавляет её в начало значения
-//  свойства value объекта, который вызывает этот метод.
-// padBoth(str) - получает парметр str (строку) и добавляет её в начало и в конец значения
-//  свойства value объекта, который вызывает этот метод.
-// Под комментарием мы добавили инициализацию экземпляра и вызовы методов
-//  в той последовательности, в которой твой код будут проверять тесты. Пожалуйста
-//   ничего там не меняй.
+// Замени объявление функции filterArray() и коллбек для
+//  метода forEach() на стрелочные функции.
 
 // Тесты
-// Объявлена функция StringBuilder(baseValue).
-// Вызов StringBuilder.prototype.hasOwnProperty('getValue') возвращает true.
-// Вызов StringBuilder.prototype.hasOwnProperty('padEnd') возвращает true.
-// Вызов StringBuilder.prototype.hasOwnProperty('padStart') возвращает true.
-// Вызов StringBuilder.prototype.hasOwnProperty('padBoth') возвращает true.
-// В результате вызова new StringBuilder('.') значение переменной builder это объект.
-// Вызов StringBuilder.prototype.isPrototypeOf(builder) возвращает true.
-// У объекта builder есть свойство value.
-// Первый вызов builder.getValue(), сразу после инциализации экземпляра, возвращает строку '.'.
-// Второй вызов builder.getValue(), после вызова builder.padStart('^'), возвращает строку '^.'.
-// Третий вызов builder.getValue(), после вызова builder.padEnd('^'), возвращает строку '^.^'.
-// Четвёртый вызов builder.getValue(), после вызова builder.padBoth('='), возвращает строку '=^.^='.
+// Объявлена переменная filterArray.
+// Переменной filterArray присвоена стрелочная функция с параметрами
+//  (numbers, value).
+// Для перебора массива numbers использован метод forEach.
+// Коллбек для метода forEach это стрелочная функция.
+// Вызов функции filterArray([1, 2, 3, 4, 5], 3) возвращает [4, 5].
+// Вызов функции filterArray([1, 2, 3, 4, 5], 4) возвращает [5].
+// Вызов функции filterArray([1, 2, 3, 4, 5], 5) возвращает [].
+// Вызов функции filterArray([12, 24, 8, 41, 76], 38) возвращает
+//  [41, 76].
+// Вызов функции filterArray([12, 24, 8, 41, 76], 20) возвращает
+//  [24, 41, 76].
+// Вызов функции со случайными, но валидными аргументами, возвращает
+//  правильное значение.
 
-function StringBuilder(baseValue) {
-  this.value = baseValue;
-}
+// Пиши код ниже этой строки
+const filterArray = (numbers, value) => {
+  const filteredNumbers = [];
 
-StringBuilder.prototype.getValue = function () {
-  return this.value;
+  numbers.forEach(number => {
+    number > value ? filteredNumbers.push(number) : [];
+  });
+
+  // Пиши код выше этой строки
+  return filteredNumbers;
 };
-
-StringBuilder.prototype.padEnd = function (str) {
-  return this.value += str;
-};
-
-StringBuilder.prototype.padStart = function (str) {
-  return this.value = str + this.value;
-};
-
-StringBuilder.prototype.padBoth = function (str) {
-  return (this.value = str + this.value + str);
-};
-
-// Пиши код выше этой строки
-const builder = new StringBuilder('.');
-
-console.log(StringBuilder.prototype.hasOwnProperty('getValue')); //возвращает true
-console.log(StringBuilder.prototype.hasOwnProperty('padEnd')); //возвращает true
-console.log(StringBuilder.prototype.hasOwnProperty('padStart')); //возвращает true
-console.log(StringBuilder.prototype.hasOwnProperty('padBoth')); //возвращает true
-console.log(new StringBuilder('.')); //значение переменной builder это объект
-
-console.log(builder.getValue()); // '.'
-builder.padStart('^');
-console.log(builder.getValue()); // '^.'
-builder.padEnd(['^']);
-// console.log(builder.padEnd('^'));
-console.log(builder.getValue()); // '^.^'
-builder.padBoth('=');
-console.log(builder.getValue()); // '=^.^='
+console.log(filterArray([1, 2, 3, 4, 5], 3)); //возвращает [4, 5].
+console.log(filterArray([1, 2, 3, 4, 5], 4)); //возвращает [5].
+console.log(filterArray([1, 2, 3, 4, 5], 5)); //возвращает [].
+console.log(filterArray([12, 24, 8, 41, 76], 38)); //возвращает [41, 76]..
+console.log(filterArray([12, 24, 8, 41, 76], 20)); //возвращает [24, 41, 76]
