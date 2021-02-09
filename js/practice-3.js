@@ -13,3 +13,4 @@ const parabol = arr => {
   return arr2;
 };
 console.log(parabol(arr));  //[3, 5, 11, 13, 7, 3, 1]
+
