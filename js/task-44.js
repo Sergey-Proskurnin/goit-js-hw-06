@@ -86,10 +86,22 @@ const users = [
   ]
 
   // Пиши код ниже этой строки
-const getTotalBalanceByGender = (users, gender) => {
-   return [...users].filter(user => user.gender === gender).reduce((total, user) => {return total + user.balance}, 0);
-};
+// const getTotalBalanceByGender = (users, gender) => {
+//    return [...users].filter(user => user.gender === gender).reduce((total, user) => {return total + user.balance}, 0);
+// };
 // Пиши код выше этой строки
+
+
+const getTotalBalanceByGender = (users, gender, total = 0) => {
+   users.filter(user => user.gender === gender)
+ .forEach(user => {
+   total += user.balance
+   
+})
+return total
+}
+ 
+
 
 console.log(getTotalBalanceByGender(users, 'male'));//12053.
 console.log(getTotalBalanceByGender(users, 'female'));//8863.
